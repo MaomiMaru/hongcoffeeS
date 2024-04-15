@@ -579,10 +579,11 @@ public class StoreController {
 //			Timestamp date1 = new Timestamp(d1.getTime());
 //			orderDTO.setOd_time(date1);
 //		}
+		
 		orderDTO.setOd_minTime(od_minTime);
 		orderDTO.setOd_maxTime(od_maxTime);
-
-
+		
+		
 		int received_not = Integer.parseInt(request.getParameter("received_not"));
 		orderDTO.setReceived_not(received_not);
 		orderDTO.setNum((int)session.getAttribute("num"));
@@ -1238,7 +1239,6 @@ public class StoreController {
 
 	// 4-3. 판매 관리
 	@GetMapping("/sell")
-
 	public String sell(HttpSession session, HttpServletRequest request, Model model, PageDTO pageDTO) {
 		System.out.println("StoreController sell()");
 
@@ -1290,12 +1290,10 @@ public class StoreController {
 
 	// 4-3-.1 판매 필터링
 	@GetMapping("/sellSearch")
-
 	public String sellSearch(HttpSession session, HttpServletRequest request, Model model, PageDTO pageDTO) throws Exception {
 		System.out.println("StoreController sellSearch()");
 		ResultDTO resultDTO = new ResultDTO();
 
-		
 		//===========페이징
 		int pageSize = 10;
 		String pageNum = request.getParameter("pageNum");
@@ -1340,8 +1338,8 @@ public class StoreController {
 			
 		resultDTO.setNum((int)session.getAttribute("num"));
 		// 필터 페이징 작업
-		// 전체 글개수 구하기  int 리턴할형 count = getConsumeCount(resultDTO) 검색어 포함
-		count = storeService.getConsumeCount(resultDTO);
+		// 전체 글개수 구하기  int 리턴할형 count = getSellCount(resultDTO) 검색어 포함
+		count = storeService.getSellCount(resultDTO);
 		// 전체 페이지개수 구하기
 		pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 		// 끝페이지 , 전체 페이지수 비교 => 끝페이지 크면 => 전체 페이지수로 끝페이지 변경
@@ -1359,9 +1357,7 @@ public class StoreController {
 		resultDTO.setEndPage(endPage);
 		resultDTO.setPageCount(pageCount);
 				
-
 		List<ResultDTO> sellList;
-
 
 		if (rs_minDate == "" && rs_maxDate == "") {
 			sellList = storeService.getSellList(pageDTO);
@@ -1372,7 +1368,7 @@ public class StoreController {
 		}
 
 		model.addAttribute("sellList", sellList);
-		model.addAttribute("PageDTO", pageDTO);
+		model.addAttribute("pageDTO", pageDTO);
 
 		return "/store/sell";
 	}// panmeSearch

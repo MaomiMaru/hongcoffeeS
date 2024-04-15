@@ -249,7 +249,7 @@ label input[type=radio]:checked:after {
 					<div
 						style="width: 50%; height: 50px; float: left; text-align: right !important; padding-top: 15px;">
 						<button style="background-color: black; color: #EFBDBC"
-							onclick="window.open('${pageContext.request.contextPath}/store/popup/sell_insert','홍커피','width=370,height=520')">추가</button>
+							onclick="window.open('${pageContext.request.contextPath}/store/popup/sell_insert','홍커피','width=370,height=520, top=100,left=200')">추가</button>
 						<button style="background-color: black; color: #EFBDBC"
 							onclick="sell_update()">수정</button>
 						<!-- 		<button style="background-color: black; color: #EFBDBC">삭제</button> -->
@@ -388,18 +388,18 @@ label input[type=radio]:checked:after {
 
 		};
 
-		$('.sellSearch').submit(function() {
-			$('.rs_minDate, .rs_maxDate').change(function() {
-				var minDate = $('.rs_minDate').val();
-				var maxDate = $('.rs_maxDate').val();
+// 		$('.sellSearch').submit(function() {
+// 			$('.rs_minDate, .rs_maxDate').change(function() {
+// 				var minDate = $('.rs_minDate').val();
+// 				var maxDate = $('.rs_maxDate').val();
 
-				if (new Date(minDate) > new Date(maxDate)) {
-					alert("시작일은 종료일 이전이어야 합니다.");
-					$('.rs_minDate').val('');
-					return false;
-				}
-			});
-		});
+// 				if (new Date(minDate) > new Date(maxDate)) {
+// 					alert("시작일은 종료일 이전이어야 합니다.");
+// 					$('.rs_minDate').val('');
+// 					return false;
+// 				}
+// 			});
+// 		});
 
 		document.addEventListener('DOMContentLoaded', function() {
 			document.querySelector('.sellSearch').addEventListener(
@@ -407,31 +407,23 @@ label input[type=radio]:checked:after {
 					function(event) {
 						var inputDate1 = new Date(document
 								.querySelector('.rs_minDate').value);
-
-						var today = new Date();
-
-						if (inputDate1 > today) {
-							alert("일시는 오늘 날짜 이후로 선택할 수 없습니다.");
-							event.preventDefault();
-						}
-					});
-		});
-
-		document.addEventListener('DOMContentLoaded', function() {
-			document.querySelector('.sellSearch').addEventListener(
-					'submit',
-					function(event) {
 						var inputDate2 = new Date(document
 								.querySelector('.rs_maxDate').value);
 
 						var today = new Date();
 
-						if (inputDate2 > today) {
-							alert("일시는 오늘 날짜 이후로 선택할 수 없습니다.");
-							event.preventDefault();
-						}
+						 if (inputDate1 > today || inputDate2 > today) {
+					            alert("일시는 오늘 날짜 이후로 선택할 수 없습니다.");
+					            event.preventDefault();
+					        }
+					        
+					        if(inputDate1 > inputDate2 ){
+					        	alert("일시는 이전 날짜가 왼쪽에 와야합니다.");
+					            event.preventDefault();
+					        }
 					});
 		});
+
 
 		$(function() {
 			$('.sellSearch').submit(

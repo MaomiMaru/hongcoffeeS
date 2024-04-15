@@ -26,6 +26,7 @@ select {
 		action="${pageContext.request.contextPath}/store/popup/order_updatePro"
 		method="post" class="form">
 		<h2 style="margin-left: 10px">발주 수정</h2>
+		<sub>&nbsp;&nbsp;<span style="color: red">*</span>포함된 항목만 수정이 가능합니다.</sub>
 		<fieldset style="border: 0px">
 			<!-- 중복 되는 내용이 있을 시 해당 div 영역에 표시 -->
 			<input type="hidden" name="od_num" value="${orderDTO.od_num }">
@@ -44,11 +45,11 @@ select {
 			</div>
 			<input type="text" name="item_price" value="${orderDTO.item_price }" readonly><br> <sub></sub>
 			<div>
-				<b>발주량</b>
+				<b>발주량</b><span style="color: red">*</span>
 			</div>
 			<input type="text" name="od_amount" class="od_amount" value="${orderDTO.od_amount }"><br> <sub></sub>
 			<div>
-				<b>적요</b>
+				<b>적요</b><span style="color: red">*</span>
 			</div><br>
 			<textarea rows="30" cols="37" name="od_note" style="height: 210px; width: 410px;">${orderDTO.od_note }</textarea>
 			<br> <sub></sub> 

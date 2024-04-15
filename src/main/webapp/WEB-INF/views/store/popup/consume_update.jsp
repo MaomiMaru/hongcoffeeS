@@ -20,6 +20,7 @@ select{
 <body>
 <form action="${pageContext.request.contextPath}/store/popup/consume_updatePro" method="post" class="form">
 <h2 style="margin-left: 10px">소모 수정</h2>
+<sub>&nbsp;&nbsp;<span style="color: red">*</span>포함된 항목만 수정이 가능합니다.</sub>
 <fieldset style="border:0px">
 <!-- 중복 되는 내용이 있을 시 해당 div 영역에 표시 -->
 <input type="hidden" name="rs_num" value="${resultDTO.rs_num}">
@@ -42,7 +43,7 @@ select{
 			</div>
 			<input type="text" class="rs_date" value="${resultDTO.rs_date}" readonly><br>
 			<div>
-				<b>소모량</b>
+				<b>소모량</b><span style="color: red">*</span>
 			</div>
 			<input type="text" name="consume" class="consume" value="${resultDTO.consume}"><br>
 				<br>

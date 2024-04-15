@@ -458,12 +458,18 @@ $('.receiveSearch').submit(function(){
 	
 	document.addEventListener('DOMContentLoaded', function() {
 	    document.querySelector('.receiveSearch').addEventListener('submit', function(event) {
-	        var inputDate = new Date(document.querySelector('.rc_time').value);
+	        var inputDate = new Date(document.querySelector('.rc_minTime').value);
+	        var inputDate2 = new Date(document.querySelector('.rc_maxTime').value);
 	        
 	        var today = new Date();
 	        
-	        if (inputDate > today) {
+	        if (inputDate > today || inputDate2 > today) {
 	            alert("입고일시는 오늘 날짜 이후로 선택할 수 없습니다.");
+	            event.preventDefault();
+	        }
+	        
+	        if(inputDate > inputDate2 ){
+	        	alert("입고일시는 이전 날짜가 왼쪽에 와야합니다.");
 	            event.preventDefault();
 	        }
 	    });

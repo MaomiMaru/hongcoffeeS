@@ -20,6 +20,7 @@ select{
 <body>
 <form action="${pageContext.request.contextPath}/store/popup/stock_updatePro" method="post" class="form">
 <h2 style="margin-left: 10px">재고 수정</h2>
+<sub>&nbsp;&nbsp;<span style="color: red">*</span>포함된 항목만 수정이 가능합니다.</sub>
 <input type="hidden" name="stock_num" value="${stockDTO.stock_num}">
 <fieldset style="border:0px">
 				<div>
@@ -35,11 +36,11 @@ select{
 			</div>
 			<input type="text" id="item_price" value="${stockDTO.item_price}" readonly><br>
 			<div>
-				<b>보유량</b>
+				<b>보유량</b><span style="color: red">*</span>
 			</div>
 			<input type="text" name="amount" class="amount" value="${stockDTO.amount}"><br>
 			<div>
-				<b>적요</b>
+				<b>적요</b><span style="color: red">*</span>
 			</div>
 			<textarea name="stock_note" rows="30" cols="37" style="height: 210px; width: 410px;">${stockDTO.stock_note}</textarea><br>
 

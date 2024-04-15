@@ -18,7 +18,8 @@ select{
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/store/popup/stock_insertPro" method="post" class="form">
-<h2 style="margin-left: 10px">재고 추가</h2>
+<h2 style="margin-left: 10px">실적 수정</h2>
+<sub>&nbsp;&nbsp;<span style="color: red">*</span>포함된 항목만 수정이 가능합니다.</sub>
 <fieldset style="border:0px">
 <!-- 중복 되는 내용이 있을 시 해당 div 영역에 표시 -->
 <div class="check"></div><br>
