@@ -250,7 +250,7 @@ label input[type=radio]:checked:after{
       	tostMessage.classList.add('active');
       	setTimeout(function(){
          	 tostMessage.classList.remove('active');
-      	},2000);
+      	},9000);
   	}
   }
   //3. 토스트 버튼에 이벤트 연결
